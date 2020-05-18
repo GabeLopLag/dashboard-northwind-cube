@@ -8,8 +8,9 @@ import { environment } from 'src/environments/environment';
 export class CuboNorthwindService {
   constructor(private http: HttpClient) {}
   getTop5(dimension: string, anio: string, mes: string, order: string) {
+    debugger;
     return this.http.get(
-      `https://localhost:44342/backend/Top5/${dimension}/${anio}/${mes}/${order}`
+      `https://localhost:44342/backend/Top5/${dimension}/${anio}/${mes}`
     );
   }
 

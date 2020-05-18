@@ -9,6 +9,7 @@ import { Top5dinamicoComponent } from './pages/top5dinamico/top5dinamico.compone
 import { HistoricosComponent } from './pages/historicos/historicos.component';
 import { BarGraphComponent } from './components/basecharts/bar-graph/bar-graph.component';
 import { PieChartComponent } from './components/basecharts/pie-chart/pie-chart.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { PieChartComponent } from './components/basecharts/pie-chart/pie-chart.c
     BarGraphComponent,
     PieChartComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ChartsModule],
+  imports: [HttpClientModule, BrowserModule, AppRoutingModule, ChartsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
