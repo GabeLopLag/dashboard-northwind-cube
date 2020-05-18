@@ -1,6 +1,26 @@
+
+<ng-select class="m-5" 
+           [items]="dimensiones"
+           [clearable]="false"
+           (change)="onChangeDimension($event)"
+           placeholder="Seleccione una dimension"
+           >
+</ng-select>
+
+<ng-select class="m-5"
+    [items]="members$ | async"
+    [multiple]="false"
+    [closeOnSelect]="true"
+    [searchable]="true"
+    placeholder="Seleccione miembro de la lista..."
+    (change)="onChangeMember()"
+    [(ngModel)]="selectedMember"
+    >
+</ng-select>
+
 <app-bar-graph 
     titulo="Serie Histórica de Ventas por Año y Por Cliente"
     [barChartLabels] = "dataDimesion"
     [barChartData] = "dataHistorico"
-    >>
+    >
 </app-bar-graph>
