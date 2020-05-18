@@ -46,7 +46,6 @@ export class BarGraphComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    debugger;
     console.log(this.barChartLabels);
     console.log(this.barChartData);
   }

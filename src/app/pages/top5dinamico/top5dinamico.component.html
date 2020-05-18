@@ -1,4 +1,25 @@
 <p>Aaaaaaahhhh</p>
+<ng-select class="m-5" 
+           [items]="dimensiones"
+           [clearable]="false"
+           (change)="onChangeDim($event)"
+           placeholder="Seleccione una dimension"
+           >
+</ng-select>
+<ng-select class="m-5" 
+           [items]="anios"
+           [clearable]="false"
+           (change)="onChangeAnio($event)"
+           placeholder="Seleccione un año"
+           >
+</ng-select>
+<ng-select class="m-5" 
+           [items]="meses"
+           [clearable]="false"
+           (change)="onChangeMes($event)"
+           placeholder="Seleccione un mes"
+           >
+</ng-select>
 <app-pie-chart
   [pieChartLabels]="dataDimension"
   [pieChartData]="dataValues"

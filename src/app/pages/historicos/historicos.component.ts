@@ -37,12 +37,11 @@ export class HistoricosComponent implements OnInit {
   constructor(private svc: CuboNorthwindService) {}
   private formatData(data: any[]): ChartDataSets[] {
     let labels = [{ data: data, label: 'Ventas' }];
-    debugger;
+
     return labels;
   }
 
   onChangeDimension($event) {
-    debugger;
     this.selectedDimension = $event;
     this.members$ = this.svc.getMembers(this.selectedDimension['dimension']);
   }
@@ -53,18 +52,15 @@ export class HistoricosComponent implements OnInit {
     this.svc
       .getHistorico(this.selectedDimension['dimension'], this.selectedMember)
       .subscribe((result) => {
-        debugger;
         this.dataDimesion = result['datosDimension'];
         this.dataHistorico = this.formatData(result['datosVenta']);
       });
   }
   ngOnInit(): void {
-    debugger;
     this.selectedDimension = this.dimensiones[0];
     this.svc
       .getHistorico(this.selectedDimension['dimension'], this.selectedMember)
       .subscribe((result) => {
-        debugger;
         this.dataDimesion = result['datosDimension'];
         this.dataHistorico = this.formatData(result['datosVenta']);
       });

@@ -47,7 +47,6 @@ export class PieChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    debugger;
     console.log(this.pieChartLabels);
     // console.log(this.labels)
   }
