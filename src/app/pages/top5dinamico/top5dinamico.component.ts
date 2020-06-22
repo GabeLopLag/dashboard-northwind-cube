@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CuboNorthwindService } from '../../services/cubo-northwind.service';
 import { Label } from 'ng2-charts';
 import { Observable } from 'rxjs';
+import * as jwt_decode from "jwt-decode";
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-top5dinamico',
   templateUrl: './top5dinamico.component.html',
@@ -32,7 +34,7 @@ export class Top5dinamicoComponent implements OnInit {
   selectedMes = '';
   selectedAnio = '';
   selectedDim = 'cliente';
-  constructor(private svc: CuboNorthwindService) {}
+  constructor(private svc: CuboNorthwindService, private router: Router) {}
   renderChart() {
     this.svc
       .getTop5(this.selectedDim, this.selectedAnio, this.selectedMes, 'DESC')
@@ -55,6 +57,8 @@ export class Top5dinamicoComponent implements OnInit {
     this.renderChart();
   }
   ngOnInit(): void {
+    const decodeUser = jwt_decode(localStorage.getItem("currentUser"));
+    if (decodeUser.rol === "PIE" || decodeUser.rol === "Admin") {
     this.renderChart();
 
     this.svc.getDimTiempo('anio').subscribe((result) => {
@@ -65,5 +69,11 @@ export class Top5dinamicoComponent implements OnInit {
     });
     // this.anios$ = this.svc.getMembers('anio');
     // this.meses$ = this.svc.getMembers('mes');
+  }
+  else
+  {
+    alert("No tienes permisos para ver gráfico de pie");
+    this.router.navigate(["/historico"]);
+  }
   }
 }

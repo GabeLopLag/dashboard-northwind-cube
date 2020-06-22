@@ -25,7 +25,7 @@ export class AuthenticationService {
   }
 
   login(user: object) {
-    return this.http.post('http://192.168.1.100/api/auth/login', user).pipe(
+    return this.http.post('http://localhost:3000/api/auth/login', user).pipe(
       map((result: any) => {
         console.log(result);
         localStorage.setItem("currentUser", JSON.stringify(result.token));
